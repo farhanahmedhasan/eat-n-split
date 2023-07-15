@@ -1,5 +1,7 @@
 import Friends from "./components/Friends.jsx";
 import FormAddFriend from "./components/FormAddFriend.jsx";
+import Button from "./components/Button.jsx";
+import {useState} from "react";
 
 const friends = [
     {
@@ -30,12 +32,20 @@ const friends = [
 ];
 
 function App() {
+    const [addToggle, setAddToggle] = useState(false)
+
+    function handleToggle() {
+        setAddToggle(prev => !prev)
+    }
 
   return (
     <div className="app">
         <div className="sidebar">
             <Friends friends={friends}/>
-            <FormAddFriend />
+            {addToggle && (
+                <FormAddFriend />
+            )}
+            <Button onClick={handleToggle}>{!addToggle ? "Add Friend" : "Close"}</Button>
         </div>
     </div>
   )
