@@ -1,7 +1,9 @@
-const initialFriends = [
+import Friends from "./components/Friends.jsx";
+
+const friends = [
     {
         id: 118836,
-        name: "Clark",
+        name: "Noman",
         image: "https://i.pravatar.cc/48?u=118836",
         balance: -7,
     },
@@ -17,14 +19,23 @@ const initialFriends = [
         image: "https://i.pravatar.cc/48?u=499476",
         balance: 0,
     },
+
+    {
+        id: 234524,
+        name: "Mehar",
+        image: "https://i.pravatar.cc/48?u=499477",
+        balance: 40,
+    },
 ];
 
 function App() {
 
   return (
-    <>
-      <h1>Eat and split</h1>
-    </>
+    <div className="app">
+        <div className="sidebar">
+            <Friends friends={friends}/>
+        </div>
+    </div>
   )
 }
 
