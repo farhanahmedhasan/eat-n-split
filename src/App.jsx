@@ -44,10 +44,14 @@ function App() {
         setFriends(prev=> ([...prev, friend]))
     }
 
+    function handleDeleteFriend(id) {
+        setFriends(prevFriends=> prevFriends.filter(friend => friend.id !== id))
+    }
+
   return (
     <div className="app">
         <div className="sidebar">
-            <Friends friends={friends}/>
+            <Friends friends={friends} onDelete={handleDeleteFriend}/>
             {addToggle && (
                 <FormAddFriend onAdd={handleAddFriend}/>
             )}

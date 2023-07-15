@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import Button from "./Button.jsx";
 
-export default function Friend({friend}) {
+export default function Friend({friend, onDelete}) {
     let owes = friend.balance > 0 ? `${friend.name} owes you ${friend.balance}$`: `You owe ${friend.name} ${Math.abs(friend.balance)}$`
     owes = friend.balance === 0 ? "We are even" : owes
 
@@ -17,7 +17,7 @@ export default function Friend({friend}) {
 
             <div className="button-group">
                 <Button btnType="primary">Select</Button>
-                <Button btnType="secondary">Delete</Button>
+                <Button btnType="secondary" onClick={()=> onDelete(friend.id)}>Delete</Button>
             </div>
         </li>
     )

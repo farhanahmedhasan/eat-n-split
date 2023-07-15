@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
 import Friend from "./Friend.jsx";
-export default function Friends({friends}) {
+export default function Friends({friends, onDelete}) {
     return(
         <ul>
-            {friends.map(friend => <Friend key={friend.id} friend={friend}/>)}
+            {friends.map(friend => <Friend key={friend.id} friend={friend} onDelete={onDelete}/>)}
         </ul>
     )
 }
