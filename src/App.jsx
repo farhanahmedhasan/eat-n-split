@@ -4,7 +4,7 @@ import Button from "./components/Button.jsx";
 import {useState} from "react";
 import FormSplitBill from "./components/FormSplitBill.jsx";
 
-const friends = [
+const initialFriends = [
     {
         id: 118836,
         name: "Noman",
@@ -34,9 +34,14 @@ const friends = [
 
 function App() {
     const [addToggle, setAddToggle] = useState(false)
+    const [friends, setFriends] = useState(initialFriends)
 
     function handleToggle() {
         setAddToggle(prev => !prev)
+    }
+
+    function handleAddFriend(friend) {
+        setFriends(prev=> ([...prev, friend]))
     }
 
   return (
@@ -44,7 +49,7 @@ function App() {
         <div className="sidebar">
             <Friends friends={friends}/>
             {addToggle && (
-                <FormAddFriend />
+                <FormAddFriend onAdd={handleAddFriend}/>
             )}
             <Button onClick={handleToggle}>{!addToggle ? "Add Friend" : "Close"}</Button>
         </div>
