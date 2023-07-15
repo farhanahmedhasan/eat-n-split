@@ -33,11 +33,11 @@ const initialFriends = [
 ];
 
 function App() {
-    const [addToggle, setAddToggle] = useState(false)
+    const [showAddFriend, setShowAddFriend] = useState(false)
     const [friends, setFriends] = useState(initialFriends)
 
     function handleToggle() {
-        setAddToggle(prev => !prev)
+        setShowAddFriend(prev => !prev)
     }
 
     function handleAddFriend(friend) {
@@ -52,10 +52,10 @@ function App() {
     <div className="app">
         <div className="sidebar">
             <Friends friends={friends} onDelete={handleDeleteFriend}/>
-            {addToggle && (
+            {showAddFriend && (
                 <FormAddFriend onAdd={handleAddFriend}/>
             )}
-            <Button onClick={handleToggle}>{!addToggle ? "Add Friend" : "Close"}</Button>
+            <Button onClick={handleToggle}>{!showAddFriend ? "Add Friend" : "Close"}</Button>
         </div>
         <FormSplitBill />
     </div>
