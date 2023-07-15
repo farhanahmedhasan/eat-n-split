@@ -2,6 +2,7 @@ import Friends from "./components/Friends.jsx";
 import FormAddFriend from "./components/FormAddFriend.jsx";
 import Button from "./components/Button.jsx";
 import {useState} from "react";
+import FormSplitBill from "./components/FormSplitBill.jsx";
 
 const friends = [
     {
@@ -47,6 +48,7 @@ function App() {
             )}
             <Button onClick={handleToggle}>{!addToggle ? "Add Friend" : "Close"}</Button>
         </div>
+        <FormSplitBill />
     </div>
   )
 }
