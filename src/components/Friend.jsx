@@ -14,7 +14,11 @@ export default function Friend({friend}) {
             <img src={friend.image} alt={friend.name}/>
             <h3>{friend.name}</h3>
             <p className={color}>{owes}</p>
-            <Button className="button">Select</Button>
+
+            <div className="button-group">
+                <Button btnType="primary">Select</Button>
+                <Button btnType="secondary">Delete</Button>
+            </div>
         </li>
     )
 }
