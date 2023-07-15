@@ -1,4 +1,5 @@
 import Friends from "./components/Friends.jsx";
+import FormAddFriend from "./components/FormAddFriend.jsx";
 
 const friends = [
     {
@@ -34,6 +35,7 @@ function App() {
     <div className="app">
         <div className="sidebar">
             <Friends friends={friends}/>
+            <FormAddFriend />
         </div>
     </div>
   )
