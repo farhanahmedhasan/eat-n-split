@@ -1,6 +1,7 @@
+/* eslint-disable react/prop-types */
 import Button from "./Button.jsx";
 
-export default function FormSplitBill() {
+export default function FormSplitBill({selectedFriend}) {
     return(
         <form className="form-split-bill">
             <h2>split bill with X</h2>
@@ -17,7 +18,7 @@ export default function FormSplitBill() {
             <label>🤑 Who is paying the bill?</label>
             <select>
                 <option value="user">You</option>
-                <option value="friend">X</option>
+                <option value="friend">{selectedFriend.name}</option>
             </select>
 
             <Button>Pay Bill</Button>
