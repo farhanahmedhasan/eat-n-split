@@ -15,6 +15,8 @@ export default function FormAddFriend({onAdd}) {
 
     function handleSubmit(e) {
         e.preventDefault()
+        if(!friend.name || !friend.image) return;
+
         onAdd({...friend, id:Date.now(), balance:0})
         setFriend({name:"", image:`https://i.pravatar.cc/48?u=933${generateRandomInteger(1,300)}`})
     }
