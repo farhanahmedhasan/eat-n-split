@@ -1,27 +1,35 @@
 /* eslint-disable react/prop-types */
+import {useState} from "react";
 import Button from "./Button.jsx";
 
 export default function FormSplitBill({selectedFriend}) {
+    const [bill, setBill] = useState("")
+    const [yourExpense, setYourExpense] = useState("")
+    const [payingBy, setPayingBy] = useState("user")
+
+    const friendExpense = bill ? bill - yourExpense : ""
+
     return(
         <form className="form-split-bill">
             <h2>split bill with {selectedFriend?.name}</h2>
 
             <label htmlFor="bill">💰 Bill value</label>
-            <input type="text" id="bill" name="bill"/>
+            <input type="text" id="bill" name="bill" value={bill} onChange={(e)=> setBill(+e.target.value)}/>
 
-            <label htmlFor="expense">🕴️ Your expense</label>
-            <input type="text" id="expense" name="expense"/>
+            <label htmlFor="yourExpense">🕴️ Your expense</label>
+            <input type="text" id="yourExpense" name="yourExpense" value={yourExpense}
+                   onChange={(e)=> setYourExpense(+e.target.value > bill ? yourExpense : +e.target.value)}/>
 
             <label>🧑🏼‍🤝‍🧑🏼 {selectedFriend?.name}&apos;s expense</label>
-            <input type="text" disabled/>
+            <input type="text" disabled value={friendExpense}/>
 
             <label>🤑 Who is paying the bill?</label>
-            <select>
+            <select name="paying" value={payingBy} onChange={(e)=> setPayingBy(e.target.value)}>
                 <option value="user">You</option>
-                <option value="friend0">{selectedFriend?.name}</option>
+                <option value="friend">{selectedFriend?.name}</option>
             </select>
 
-            <Button>Pay Bill</Button>
+            <Button type="submit">Split Bill</Button>
         </form>
     )
 }
